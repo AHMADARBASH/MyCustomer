@@ -280,14 +280,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    Future.delayed(Duration.zero).then((value) async {
-      await CustomerCubit.get(context).validateActiveCustomers();
-      await CustomerCubit.get(context).getTotalCustomersCount();
-      await CustomerCubit.get(context).getActiveCustomers();
-      await CustomerCubit.get(context).getSuspendAccounts();
-    });
+    CustomerCubit.get(context).validateActiveCustomers();
+    CustomerCubit.get(context).getTotalCustomersCount();
+    CustomerCubit.get(context).getActiveCustomers();
+    CustomerCubit.get(context).getSuspendAccounts();
+
     super.initState();
   }
+
+  Future<void> timeDelay() async {
+    await Future.delayed(Duration(seconds: 2));
+  }
+
+  final _fractionDuration = Duration(milliseconds: 800);
 
   @override
   Widget build(BuildContext context) {
@@ -392,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.dehaze,
             color: Colors.white,
           ),
@@ -431,6 +436,175 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 35.h,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 10,
+                                    height: 10,
+                                    decoration: BoxDecoration(
+                                        color: Colors.blue,
+                                        borderRadius: BorderRadius.circular(2)),
+                                  ),
+                                  Text('  Total Customers'),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 10,
+                                    height: 10,
+                                    decoration: BoxDecoration(
+                                        color: Colors.greenAccent,
+                                        borderRadius: BorderRadius.circular(2)),
+                                  ),
+                                  Text('  Active Customers'),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 10,
+                                    height: 10,
+                                    decoration: BoxDecoration(
+                                        color: Colors.orangeAccent,
+                                        borderRadius: BorderRadius.circular(2)),
+                                  ),
+                                  Text('  Pending Customers'),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        FutureBuilder(
+                          future: timeDelay(),
+                          builder: (context, snapshot) => Expanded(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Stack(
+                                    alignment: Alignment.bottomCenter,
+                                    children: [
+                                      FractionallySizedBox(
+                                        heightFactor: 1,
+                                        child: Container(
+                                          margin: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blueGrey
+                                                  .withOpacity(0.05),
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          width: 10.w,
+                                        ),
+                                      ),
+                                      AnimatedFractionallySizedBox(
+                                        curve: Curves.ease,
+                                        duration: _fractionDuration,
+                                        heightFactor:
+                                            snapshot.connectionState ==
+                                                    ConnectionState.waiting
+                                                ? 0
+                                                : cubit.totalCustomersCount == 0
+                                                    ? 0
+                                                    : 1,
+                                        child: Container(
+                                          width: 10.w,
+                                          margin: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                      ),
+                                    ]),
+                                Stack(
+                                    alignment: Alignment.bottomCenter,
+                                    children: [
+                                      FractionallySizedBox(
+                                        heightFactor: 1,
+                                        child: Container(
+                                          margin: const EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blueGrey
+                                                  .withOpacity(0.05),
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          width: 10.w,
+                                        ),
+                                      ),
+                                      AnimatedFractionallySizedBox(
+                                        curve: Curves.ease,
+                                        duration: _fractionDuration,
+                                        heightFactor:
+                                            snapshot.connectionState ==
+                                                    ConnectionState.waiting
+                                                ? 0
+                                                : cubit.activeCustomers.length /
+                                                    cubit.totalCustomersCount,
+                                        child: Container(
+                                          margin: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: Colors.greenAccent,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          width: 10.w,
+                                        ),
+                                      ),
+                                    ]),
+                                Stack(
+                                    alignment: Alignment.bottomCenter,
+                                    children: [
+                                      FractionallySizedBox(
+                                        heightFactor: 1,
+                                        child: Container(
+                                          margin: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blueGrey
+                                                  .withOpacity(0.05),
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          width: 10.w,
+                                        ),
+                                      ),
+                                      AnimatedFractionallySizedBox(
+                                        curve: Curves.ease,
+                                        duration: _fractionDuration,
+                                        heightFactor: snapshot
+                                                    .connectionState ==
+                                                ConnectionState.waiting
+                                            ? 0
+                                            : cubit.suspendCustomers.length /
+                                                cubit.totalCustomersCount,
+                                        child: Container(
+                                          margin: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: Colors.orangeAccent,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          width: 10.w,
+                                        ),
+                                      ),
+                                    ]),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 1.h,
+                  ),
                   Container(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height * 0.10,
