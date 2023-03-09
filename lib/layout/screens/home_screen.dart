@@ -34,6 +34,185 @@ class _HomeScreenState extends State<HomeScreen> {
   bool paidSwitchValue = false;
   DateTime validtoDate = DateTime.now();
 
+  Widget dashingLine() {
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            width: 1,
+            height: 10,
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          SizedBox(
+            height: 2,
+          ),
+        ],
+      ),
+    );
+  }
+
   IconData fabIcon = Icons.add;
   bool isBottomSheetShown = false;
   void showBottomSheet(
@@ -218,6 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               onPressed: () async {
                                                 final selectedDate =
                                                     await showDatePicker(
+                                            
                                                         context: context,
                                                         initialDate:
                                                             DateTime.now(),
@@ -278,18 +458,16 @@ class _HomeScreenState extends State<HomeScreen> {
         });
   }
 
+  late final Future _myFuture;
   @override
   void initState() {
     CustomerCubit.get(context).validateActiveCustomers();
     CustomerCubit.get(context).getTotalCustomersCount();
     CustomerCubit.get(context).getActiveCustomers();
     CustomerCubit.get(context).getSuspendAccounts();
+    _myFuture = Future.delayed(Duration(seconds: 1));
 
     super.initState();
-  }
-
-  Future<void> timeDelay() async {
-    await Future.delayed(Duration(seconds: 2));
   }
 
   final _fractionDuration = Duration(milliseconds: 800);
@@ -351,23 +529,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: Colors.white,
                                         border: Border.all(
                                             color: Colors.blue, width: 3)))),
-                            // ListTile(
-                            //   onTap: () {
-                            //     Navigator.of(context).pop();
-                            //     ThemeCubit.get(context)
-                            //         .changeTheme(themeName: 'darkTheme');
-                            //     setState(() {});
-                            //   },
-                            //   title: const Text('Dark Theme'),
-                            //   trailing: Container(
-                            //       width: 50,
-                            //       height: 50,
-                            //       decoration: BoxDecoration(
-                            //           shape: BoxShape.circle,
-                            //           color: Colors.black,
-                            //           border: Border.all(
-                            //               color: Colors.blue, width: 3))),
-                            // ),
                             ListTile(
                               onTap: () {
                                 Navigator.of(context).pop();
@@ -447,47 +608,80 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    width: 10,
-                                    height: 10,
-                                    decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                        borderRadius: BorderRadius.circular(2)),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        width: 10,
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                      ),
+                                      Text('')
+                                    ],
                                   ),
-                                  Text('  Total Customers'),
+                                  Column(
+                                    children: [
+                                      Text('  Total Customers'),
+                                      Text('${cubit.totalCustomersCount}')
+                                    ],
+                                  ),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    width: 10,
-                                    height: 10,
-                                    decoration: BoxDecoration(
-                                        color: Colors.greenAccent,
-                                        borderRadius: BorderRadius.circular(2)),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        width: 10,
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                            color: Colors.greenAccent,
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                      ),
+                                      Text('')
+                                    ],
                                   ),
-                                  Text('  Active Customers'),
+                                  Column(
+                                    children: [
+                                      Text('  Active Customers'),
+                                      Text('${cubit.activeCustomers.length}')
+                                    ],
+                                  ),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    width: 10,
-                                    height: 10,
-                                    decoration: BoxDecoration(
-                                        color: Colors.orangeAccent,
-                                        borderRadius: BorderRadius.circular(2)),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        width: 10,
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                            color: Colors.orangeAccent,
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                      ),
+                                      Text('')
+                                    ],
                                   ),
-                                  Text('  Pending Customers'),
+                                  Column(
+                                    children: [
+                                      Text('  Suspend Customers'),
+                                      Text('${cubit.suspendCustomers.length}')
+                                    ],
+                                  ),
                                 ],
                               ),
                             ],
                           ),
                         ),
                         FutureBuilder(
-                          future: timeDelay(),
+                          future: _myFuture,
                           builder: (context, snapshot) => Expanded(
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -598,6 +792,30 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
                             ),
                           ),
+                        ),
+                        dashingLine(),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '  ${cubit.totalCustomersCount}',
+                              style: TextStyle(
+                                color: Colors.grey.withOpacity(0.2),
+                              ),
+                            ),
+                            Text(
+                              '  ${cubit.totalCustomersCount ~/ 2}',
+                              style: TextStyle(
+                                color: Colors.grey.withOpacity(0.2),
+                              ),
+                            ),
+                            Text(
+                              '  0',
+                              style: TextStyle(
+                                color: Colors.grey.withOpacity(0.2),
+                              ),
+                            )
+                          ],
                         )
                       ],
                     ),
@@ -605,142 +823,142 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 1.h,
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.10,
-                    decoration: BoxDecoration(
-                        color: Colors.blue.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Row(children: [
-                      const Expanded(
-                          flex: 2,
-                          child: Center(
-                              child: Icon(
-                            Icons.groups,
-                            color: Colors.blue,
-                            size: 60,
-                          ))),
-                      Expanded(
-                        flex: 3,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Total Customers',
-                              style: TextStyle(
-                                  fontSize: 15.sp, fontWeight: FontWeight.bold),
-                            ),
-                            state is CustomersValidatingState
-                                ? const CircularProgressIndicator(
-                                    color: Colors.white,
-                                  )
-                                : Text(
-                                    cubit.totalCustomersCount.toString(),
-                                    style: TextStyle(fontSize: 15.sp),
-                                  )
-                          ],
-                        ),
-                      ),
-                    ]),
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushNamed(ActiveCustomersScreen.routeName)
-                          .then((value) {
-                        cubit.getSuspendAccounts();
-                        cubit.getActiveCustomers();
-                      });
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.10,
-                      decoration: BoxDecoration(
-                          color: Colors.greenAccent.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Row(children: [
-                        const Expanded(
-                            flex: 2,
-                            child: Center(
-                                child: Icon(
-                              Icons.play_arrow,
-                              color: Colors.greenAccent,
-                              size: 60,
-                            ))),
-                        Expanded(
-                          flex: 3,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Active Customers',
-                                style: TextStyle(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              state is CustomersValidatingState
-                                  ? const CircularProgressIndicator(
-                                      color: Colors.white,
-                                    )
-                                  : Text(
-                                      cubit.activeCustomers.length.toString(),
-                                      style: TextStyle(fontSize: 15.sp),
-                                    )
-                            ],
-                          ),
-                        ),
-                      ]),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    onTap: () => Navigator.of(context)
-                        .pushNamed(SuspendAccountsScreen.routeName)
-                        .then((value) {
-                      cubit.getSuspendAccounts();
-                      cubit.getActiveCustomers();
-                    }),
-                    child: Container(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.10,
-                      decoration: BoxDecoration(
-                          color: Colors.orangeAccent.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Row(children: [
-                        const Expanded(
-                            flex: 2,
-                            child: Center(
-                                child: Icon(
-                              Icons.pause,
-                              color: Colors.orangeAccent,
-                              size: 60,
-                            ))),
-                        Expanded(
-                          flex: 3,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Suspend Customers',
-                                style: TextStyle(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              state is CustomersValidatingState
-                                  ? const CircularProgressIndicator(
-                                      color: Colors.white,
-                                    )
-                                  : Text(
-                                      cubit.suspendCustomers.length.toString(),
-                                      style: TextStyle(fontSize: 15.sp),
-                                    )
-                            ],
-                          ),
-                        ),
-                      ]),
-                    ),
-                  ),
+                  // Container(
+                  //   width: double.infinity,
+                  //   height: MediaQuery.of(context).size.height * 0.10,
+                  //   decoration: BoxDecoration(
+                  //       color: Colors.blue.withOpacity(0.2),
+                  //       borderRadius: BorderRadius.circular(10)),
+                  //   child: Row(children: [
+                  //     const Expanded(
+                  //         flex: 2,
+                  //         child: Center(
+                  //             child: Icon(
+                  //           Icons.groups,
+                  //           color: Colors.blue,
+                  //           size: 60,
+                  //         ))),
+                  //     Expanded(
+                  //       flex: 3,
+                  //       child: Column(
+                  //         mainAxisAlignment: MainAxisAlignment.center,
+                  //         children: [
+                  //           Text(
+                  //             'Total Customers',
+                  //             style: TextStyle(
+                  //                 fontSize: 15.sp, fontWeight: FontWeight.bold),
+                  //           ),
+                  //           state is CustomersValidatingState
+                  //               ? const CircularProgressIndicator(
+                  //                   color: Colors.white,
+                  //                 )
+                  //               : Text(
+                  //                   cubit.totalCustomersCount.toString(),
+                  //                   style: TextStyle(fontSize: 15.sp),
+                  //                 )
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ]),
+                  // ),
+                  // const SizedBox(height: 10),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     Navigator.of(context)
+                  //         .pushNamed(ActiveCustomersScreen.routeName)
+                  //         .then((value) {
+                  //       cubit.getSuspendAccounts();
+                  //       cubit.getActiveCustomers();
+                  //     });
+                  //   },
+                  //   child: Container(
+                  //     width: double.infinity,
+                  //     height: MediaQuery.of(context).size.height * 0.10,
+                  //     decoration: BoxDecoration(
+                  //         color: Colors.greenAccent.withOpacity(0.2),
+                  //         borderRadius: BorderRadius.circular(10)),
+                  //     child: Row(children: [
+                  //       const Expanded(
+                  //           flex: 2,
+                  //           child: Center(
+                  //               child: Icon(
+                  //             Icons.play_arrow,
+                  //             color: Colors.greenAccent,
+                  //             size: 60,
+                  //           ))),
+                  //       Expanded(
+                  //         flex: 3,
+                  //         child: Column(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: [
+                  //             Text(
+                  //               'Active Customers',
+                  //               style: TextStyle(
+                  //                   fontSize: 15.sp,
+                  //                   fontWeight: FontWeight.bold),
+                  //             ),
+                  //             state is CustomersValidatingState
+                  //                 ? const CircularProgressIndicator(
+                  //                     color: Colors.white,
+                  //                   )
+                  //                 : Text(
+                  //                     cubit.activeCustomers.length.toString(),
+                  //                     style: TextStyle(fontSize: 15.sp),
+                  //                   )
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ]),
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 10),
+                  // GestureDetector(
+                  //   onTap: () => Navigator.of(context)
+                  //       .pushNamed(SuspendAccountsScreen.routeName)
+                  //       .then((value) {
+                  //     cubit.getSuspendAccounts();
+                  //     cubit.getActiveCustomers();
+                  //   }),
+                  //   child: Container(
+                  //     width: double.infinity,
+                  //     height: MediaQuery.of(context).size.height * 0.10,
+                  //     decoration: BoxDecoration(
+                  //         color: Colors.orangeAccent.withOpacity(0.2),
+                  //         borderRadius: BorderRadius.circular(10)),
+                  //     child: Row(children: [
+                  //       const Expanded(
+                  //           flex: 2,
+                  //           child: Center(
+                  //               child: Icon(
+                  //             Icons.pause,
+                  //             color: Colors.orangeAccent,
+                  //             size: 60,
+                  //           ))),
+                  //       Expanded(
+                  //         flex: 3,
+                  //         child: Column(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: [
+                  //             Text(
+                  //               'Suspend Customers',
+                  //               style: TextStyle(
+                  //                   fontSize: 15.sp,
+                  //                   fontWeight: FontWeight.bold),
+                  //             ),
+                  //             state is CustomersValidatingState
+                  //                 ? const CircularProgressIndicator(
+                  //                     color: Colors.white,
+                  //                   )
+                  //                 : Text(
+                  //                     cubit.suspendCustomers.length.toString(),
+                  //                     style: TextStyle(fontSize: 15.sp),
+                  //                   )
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ]),
+                  //   ),
+                  // ),
                 ],
               ),
             );
